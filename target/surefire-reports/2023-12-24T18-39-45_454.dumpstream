@@ -1,0 +1,5 @@
+# Created at 2023-12-24T18:39:46.679
+Boot Manifest-JAR contains absolute paths in classpath 'F:\1.Rayan Program\Springboot\5.EmployeeManagementSystem2\target\test-classes'
+Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+'other' has different root
+

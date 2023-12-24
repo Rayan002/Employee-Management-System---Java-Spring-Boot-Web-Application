@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Employee Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        form {
+            width: 300px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background-color: #ffffff;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: calc(100% - 16px);
+            padding: 8px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .captcha-container {
+            margin-top: 18px;
+            display: flex;
+            align-items: center;
+        }
+
+        img {
+            margin-right: 10px;
+            max-height: 30px;
+        }
+
+        .captcha-input {
+            width: 100px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<form id="deleteEmployee" onsubmit="deleteEmployee(); return false;" data-row-number="0">
+    <label for="employeeID">Employee ID:</label>
+    <input type="text" id="employeeID" name="employeeID" required>
+
+    <div class="captcha-container">
+        <img src="/images/Captcha.PNG" alt="Captcha Image">
+        <input type="text" id="captchaInput" name="captchaInput" class="captcha-input" required>
+    </div>
+
+    <button type="submit">Delete Employee</button>
+</form>
+
+<script>
+    function deleteEmployee() {
+        var employeeId = document.getElementById('employeeID').value;
+        var rowNumber = document.getElementById('deleteEmployee').getAttribute('data-row-number');
+
+        fetch('/employees/delete/' + employeeId, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Employee deleted successfully');
+                // Optionally, you can update the UI by removing the deleted row
+                removeTableRow(rowNumber);
+            } else {
+                console.error('Failed to delete employee');
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+    function removeTableRow(rowNumber) {
+        // Remove the table row by its row number
+        var table = document.getElementById('yourTableId'); // Replace 'yourTableId' with the actual ID of your table
+        table.deleteRow(rowNumber);
+    }
+</script>
+
+
+
+</body>
+</html>

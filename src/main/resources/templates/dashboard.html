@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Daisy UI stylesheets and scripts go here -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.22/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!--    chart-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/charts.css/dist/charts.min.css">
+    <title>Title</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            overflow-y: auto; /* Enable vertical scrolling */
+
+        }
+
+
+        .centered-card-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh; /* Adjust as needed */
+        }
+
+        .card-center {
+            width: 100%;
+            max-width: 96rem; /* Set the maximum width of the card */
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+
+        }
+
+        #navbar {
+            background-color: #fff;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            color: #333;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: box-shadow 0.3s ease;
+        }
+
+        #navbar a {
+            float: left;
+            display: block;
+            color: #333;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        #navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        /* Initial styles */
+        .stat {
+            /* Add your other styles here */
+            transition: box-shadow 0.3s ease; /* Add transition for a smooth effect on hover */
+        }
+
+        /* Hover effect */
+        .stat:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Increase elevation on hover */
+        }
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .stat {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card {
+            margin: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+
+
+<div class="navbar bg-base-100">
+    <div class="flex-1">
+        <a class="btn btn-ghost text-xl">Workforce Wizard</a>
+    </div>
+
+
+</div>
+</div>
+
+<div class="stats stats-vertical lg:stats-horizontal shadow">
+    <div class="stat">
+        <div class="stat-title">Total Number of Employees</div>
+        <div class="stat-value" th:text="${TotalEmployee}"></div>
+        <div class="stat-desc">Branch-01</div>
+    </div>
+
+    <div class="stat">
+        <div class="stat-title">Total Number of Developers</div>
+        <div class="stat-value" th:text="${CountDevelopers}"></div>
+        <div class="stat-desc">↗︎(22%)</div>
+    </div>
+
+    <div class="stat">
+        <div class="stat-title">Total Number of Designers</div>
+        <div class="stat-value"th:text="${CountDesigner}"></div>
+        <div class="stat-desc">↘︎(14%)</div>
+    </div>
+</div>
+
+<div class="stats stats-vertical lg:stats-horizontal shadow">
+    <div class="stat">
+        <div class="stat-title">Total Number of Interns</div>
+        <div class="stat-value" th:text="${CountDevelopers}"></div>
+        <div class="stat-desc">↗︎(45%)</div>
+    </div>
+
+    <div class="stat">
+        <div class="stat-title">Total Number of Clients</div>
+        <div class="stat-value"th:text="${CountDesigner}"></div>
+        <div class="stat-desc">↘︎(33%)</div>
+    </div>
+
+    <div class="stat">
+        <div class="stat-title">Total Number of Current Projects</div>
+        <div class="stat-value" th:text="${TotalEmployee}"></div>
+        <div class="stat-desc">Branch-01</div>
+    </div>
+</div>
+
+<div class="stats stats-vertical lg:stats-horizontal shadow">
+    <div class="stat">
+        <div class="stat-title">Performance of each team</div>
+
+        <table class="charts-css column hide-data">
+
+            <thead>
+            <tr>
+                <th scope="col"> Month </th>
+                <th scope="col"> Progress </th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+                <th scope="row"> Jan </th>
+                <td style="--size: 0.3;"> <span class="data"> 30 </span> </td>
+            </tr>
+            <tr>
+                <th scope="row"> Feb </th>
+                <td style="--size: 0.5;"> <span class="data"> 50 </span> </td>
+            </tr>
+            <tr>
+                <th scope="row"> Mar </th>
+                <td style="--size: 0.8;"> <span class="data"> 80 </span> </td>
+            </tr>
+            <tr>
+                <th scope="row"> Apr </th>
+                <td style="--size: 1;"> <span class="data"> 100 </span> </td>
+            </tr>
+            <tr>
+                <th scope="row"> May </th>
+                <td style="--size: 0.65;"> <span class="data"> 65 </span> </td>
+            </tr>
+            <tr>
+                <th scope="row"> Jun </th>
+                <td style="--size: 0.45;"> <span class="data"> 45 </span> </td>
+            </tr>
+
+
+            </tbody>
+
+        </table>
+
+
+        <div class="stat-desc">Branch-01 Teams</div>
+    </div>
+
+    <div class="stat">
+        <div class="stat-title">Overall Performance of the Company</div>
+
+        <div id="my-chart1">
+
+            <table class="charts-css area hide-data">
+
+                <tbody>
+                <tr>
+                    <td style="--start: 0.2; --size: 0.4"> <span class="data"> $40K </span> </td>
+                </tr>
+                <tr>
+                    <td style="--start: 0.4; --size: 0.8"> <span class="data"> $80K </span> </td>
+                </tr>
+                <tr>
+                    <td style="--start: 0.8; --size: 0.6"> <span class="data"> $60K </span> </td>
+                </tr>
+                <tr>
+                    <td style="--start: 0.6; --size: 1.0"> <span class="data"> $100K </span> </td>
+                </tr>
+                <tr>
+                    <td style="--start: 1.0; --size: 0.3"> <span class="data"> $30K </span> </td>
+                </tr>
+                </tbody>
+
+            </table>
+        </div>
+
+        <div class="stat-desc">↗︎ 400 (22%)</div>
+    </div>
+
+    <div class="stat">
+        <div class="stat-title">Performance per decade</div>
+        <table class="charts-css line multiple hide-data show-labels show-primary-axis show-4-secondary-axes show-data-axes"><caption> Line Example #10 </caption> <thead><tr><th scope="col"> Year </th> <th scope="col"> Progress 1 </th> <th scope="col"> Progress 2 </th> <th scope="col"> Progress 3 </th></tr></thead> <tbody><tr><th scope="row"> 2000 </th> <td style="--start: 0.1; --end: 0.5;"><span class="data"> 50 </span></td> <td style="--start: 0.0; --end: 0.2;"><span class="data"> 20 </span></td> <td style="--start: 0.2; --end: 0.4;"><span class="data"> 40 </span></td></tr> <tr><th scope="row"> 2010 </th> <td style="--start: 0.5; --end: 0.8;"><span class="data"> 80 </span></td> <td style="--start: 0.2; --end: 0.5;"><span class="data"> 50 </span></td> <td style="--start: 0.4; --end: 0.1;"><span class="data"> 10 </span></td></tr> <tr><th scope="row"> 2020 </th> <td style="--start: 0.8; --end: 0.4;"><span class="data"> 40 </span></td> <td style="--start: 0.5; --end: 0.3;"><span class="data"> 30 </span></td> <td style="--start: 0.1; --end: 0.2;"><span class="data"> 20 </span></td></tr></tbody></table>
+
+        <div class="stat-desc">↘︎ 90 (14%)</div>
+    </div>
+</div>
+
+
+<div class="centered-card-container">
+    <div class="card w-96 bg-base-100 shadow-xl">
+        <figure><img src="https://cdn.pixabay.com/photo/2018/05/14/16/54/cyber-3400789_1280.jpg" alt="Shoes"/></figure>
+        <div class="card-body">
+            <h2 class="card-title">Manage Employee Database</h2>
+            <p>employee can be added / deleted / modified</p>
+            <div class="card-actions justify-end">
+                <button class="btn btn-outline " onclick="redirectToHome()">ADD</button>
+                <button class="btn btn-outline " onclick="redirectToList()">VIEW</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Footer-->
+<footer class="footer footer-center p-4 bg-neutral text-neutral-content">
+    <aside>
+        <p>Copyright © 2023 - All right reserved - Designed and Developed By <b>Mohamed Rayan</b></p>
+    </aside>
+
+
+    <span class="inline-flex">
+        <a class="text-gray-500" href="https://www.linkedin.com/in/mohamed-rayan-6397a3245/" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-linkedin"
+               viewBox="0 0 16 16">
+            <path
+                    d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" />
+          </svg>
+        </a>
+        <a class="ml-4 text-gray-500" href="https://github.com/Rayan002" target="_blank">
+
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-github"
+               viewBox="0 0 16 16">
+            <path
+                    d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+          </svg>
+        </a>
+        <a class="ml-4 text-gray-500" href="https://www.instagram.com/iamrayan002/?next=%2F" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-instagram"
+               viewBox="0 0 16 16">
+            <path
+                    d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
+          </svg>
+        </a>
+        <a class="ml-4 text-gray-500">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-twitter"
+               viewBox="0 0 16 16">
+            <path
+                    d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" />
+          </svg>
+        </a>
+      </span>
+
+
+</footer>
+
+<script>
+    function redirectToHome() {
+        window.location.href = '/home';
+    }
+</script>
+
+<script>
+    function redirectToList() {
+        window.location.href = '/employees/all';
+    }
+</script>
+
+
+</body>
+</html>
