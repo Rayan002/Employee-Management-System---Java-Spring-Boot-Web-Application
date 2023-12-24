@@ -8,6 +8,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+     <!-- Daisy UI stylesheets and scripts go here -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.22/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
     <!--Stylesheet-->
     <style media="screen">
         *,
@@ -137,6 +141,11 @@
     </style>
 </head>
 <body>
+     <div role="alert" class="alert alert-warning">
+  <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+  <span>NOTE:This application uses embedded database (H2)-First Data Need To Be Added</span>
+</div>
+    
 <div class="background">
     <div class="shape"></div>
     <div class="shape"></div>
@@ -144,7 +153,9 @@
 
 
 <!-- These changes ensure that when the form is submitted, it sends a POST request to the /login endpoint. The handleLogin method in the LoginController processes the login logic, and upon success, it redirects to the /dashboard page-->
-<p> NOTE:This application uses embedded database (H2) - First Data Need To Be Added</p>
+<!-- <p> NOTE:This application uses embedded database (H2) </br>First Data Need To Be Added</p> -->
+   
+</br>
     <form action="/login" method="post" >
     <!--    <h3>Workforce Wizard</h3>-->
     <h3>Login Here</h3>
